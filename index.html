@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Углеводы — Шпаргалка 10 класс</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161920;
+    --card: #1c2030;
+    --border: #2a2f42;
+    --accent: #6ee7b7;
+    --accent2: #f472b6;
+    --accent3: #fbbf24;
+    --accent4: #60a5fa;
+    --text: #e8eaf2;
+    --muted: #8892a4;
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Golos Text', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #10172a 0%, #1a1040 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 20px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(110,231,183,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(110,231,183,.12);
+    border: 1px solid rgba(110,231,183,.35);
+    color: var(--accent);
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 99px;
+    margin-bottom: 14px;
+  }
+  header h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(22px, 5vw, 42px);
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(120deg, var(--accent) 0%, var(--accent4) 55%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  header p {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: .5px;
+  }
+
+  /* ── NAV TABS ── */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    padding: 16px 16px 0;
+    max-width: 900px;
+    margin: 0 auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0;
+  }
+  .tab-btn {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 11px 8px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    border-bottom: none;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .tab-btn.active {
+    background: var(--card);
+    color: var(--accent);
+    border-color: var(--accent);
+    border-bottom-color: var(--card);
+    position: relative;
+    bottom: -1px;
+  }
+  .tab-btn:not(.active):hover { color: var(--text); border-color: #3a4060; }
+
+  /* ── CONTENT ── */
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* ── SECTION TITLE ── */
+  .section-label {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 28px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── TASK CARD ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 18px 16px;
+    margin-bottom: 12px;
+    transition: border-color .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover { border-color: #3a4060; }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    border-radius: 2px 0 0 2px;
+  }
+  .card.green::before { background: var(--accent); }
+  .card.pink::before  { background: var(--accent2); }
+  .card.yellow::before{ background: var(--accent3); }
+  .card.blue::before  { background: var(--accent4); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .task-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    min-width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .green .task-num { background: rgba(110,231,183,.12); color: var(--accent); }
+  .pink  .task-num { background: rgba(244,114,182,.12); color: var(--accent2); }
+  .yellow.task-num, .yellow .task-num { background: rgba(251,191,36,.12); color: var(--accent3); }
+  .blue  .task-num { background: rgba(96,165,250,.12); color: var(--accent4); }
+
+  .card-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    padding-top: 7px;
+    line-height: 1.4;
+  }
+
+  /* ── FORMULA BOX ── */
+  .formula {
+    background: #11141e;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #c8d3f5;
+    margin: 8px 0;
+    overflow-x: auto;
+    white-space: pre;
+    line-height: 1.7;
+  }
+  .formula .arrow { color: var(--accent3); font-weight: bold; }
+  .formula .result { color: var(--accent); font-weight: bold; }
+  .formula .note { color: var(--muted); }
+  .formula .highlight { color: var(--accent2); }
+
+  /* ── ANSWER CHIP ── */
+  .answer {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(110,231,183,.1);
+    border: 1px solid rgba(110,231,183,.3);
+    color: var(--accent);
+    border-radius: 99px;
+    padding: 4px 14px;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+  .answer::before { content: '✓'; font-size: 13px; }
+
+  /* ── STEP LIST ── */
+  .steps { list-style: none; margin: 8px 0; }
+  .steps li {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    font-size: 14px;
+    align-items: flex-start;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .step-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .pink .step-dot { background: var(--accent2); }
+  .yellow .step-dot { background: var(--accent3); }
+  .blue .step-dot { background: var(--accent4); }
+
+  /* ── COMPARISON ROW ── */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  .compare-item {
+    background: #11141e;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    border: 1px solid var(--border);
+  }
+  .compare-item .ci-label {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .ok { color: var(--accent); font-weight: 600; }
+  .no { color: var(--accent2); font-weight: 600; }
+
+  /* ── REACTION TAG ── */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .tag-green { background: rgba(110,231,183,.15); color: var(--accent); }
+  .tag-red   { background: rgba(244,114,182,.15); color: var(--accent2); }
+
+  /* ── CALCULATION STEPS ── */
+  .calc {
+    background: #0e1118;
+    border-radius: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  .calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px dashed rgba(255,255,255,.06);
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .calc-row:last-child { border-bottom: none; }
+  .calc-label { color: var(--muted); flex-shrink: 0; }
+  .calc-val { color: var(--text); font-family: 'Courier New', monospace; text-align: right; }
+
+  /* ── PART 2: THEORY ── */
+  .q-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+  .q-card:hover { border-color: #3a4060; }
+  .q-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .q-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    font-weight: 900;
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background: rgba(96,165,250,.12);
+    color: var(--accent4);
+    flex-shrink: 0;
+  }
+  .q-title {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .q-chevron {
+    color: var(--muted);
+    font-size: 18px;
+    transition: transform .25s;
+    flex-shrink: 0;
+  }
+  .q-card.open .q-chevron { transform: rotate(180deg); }
+  .q-body {
+    display: none;
+    padding: 0 18px 16px;
+    border-top: 1px solid var(--border);
+    animation: fadeIn .2s ease;
+  }
+  .q-card.open .q-body { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+  .q-body p { font-size: 14px; color: var(--text); margin: 10px 0 6px; line-height: 1.6; }
+  .q-body strong { color: var(--accent); }
+
+  /* ── TABLE ── */
+  .tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 10px 0;
+  }
+  .tbl th {
+    background: #11141e;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .tbl td {
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    vertical-align: top;
+  }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl tr:hover td { background: rgba(255,255,255,.02); }
+
+  /* ── CHAIN DIAGRAM ── */
+  .chain {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  .chain-item {
+    background: rgba(96,165,250,.1);
+    border: 1px solid rgba(96,165,250,.25);
+    color: var(--accent4);
+    padding: 5px 12px;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .chain-arrow {
+    color: var(--accent3);
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .info-box {
+    background: rgba(110,231,183,.06);
+    border: 1px solid rgba(110,231,183,.2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin: 8px 0;
+    line-height: 1.6;
+  }
+  .info-box.warn {
+    background: rgba(251,191,36,.06);
+    border-color: rgba(251,191,36,.2);
+  }
+
+  /* ── SCROLL TOP ── */
+  #scrollTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 42px; height: 42px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--muted);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .3s, border-color .2s;
+    z-index: 200;
+  }
+  #scrollTop.visible { opacity: 1; }
+  #scrollTop:hover { border-color: var(--accent); color: var(--accent); }
+
+  @media (max-width: 500px) {
+    .compare { grid-template-columns: 1fr; }
+    .formula { font-size: 12px; }
+    .tab-btn { font-size: 9.5px; padding: 10px 4px; }
+    header h1 { font-size: 20px; }
+    .calc-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .calc-val { text-align: left; }
+  }
+
+  /* expand all button */
+  .expand-btn {
+    background: rgba(96,165,250,.1);
+    border: 1px solid rgba(96,165,250,.25);
+    color: var(--accent4);
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 99px;
+    cursor: pointer;
+    margin-bottom: 14px;
+    transition: all .2s;
+  }
+  .expand-btn:hover { background: rgba(96,165,250,.18); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-badge">Химия · 10 класс · Рудзитис</div>
+  <h1>УГЛЕВОДЫ</h1>
+  <p>Шпаргалка для зачёта · Задания + Теория</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('part1',this)">⚗️ Часть 1: Задачи</button>
+  <button class="tab-btn" onclick="switchTab('part2',this)">📖 Часть 2: Теория</button>
+</div>
+
+<div class="content">
+
+<!-- ═══════════════════════════════ ЧАСТЬ 1 ═══════════════════════════════ -->
+<div id="part1" class="tab-pane active">
+
+  <div class="section-label">Гидролиз и распознавание</div>
+
+  <!-- Задание 1 -->
+  <div class="card green">
+    <div class="card-header">
+      <div class="task-num">1</div>
+      <div class="card-title">Гидролиз глюкозы, фруктозы, сахарозы</div>
+    </div>
+    <ul class="steps">
+      <li><span class="step-dot"></span><span>Глюкоза <span class="tag tag-red">НЕ гидролизуется</span> — моносахарид</span></li>
+      <li><span class="step-dot"></span><span>Фруктоза <span class="tag tag-red">НЕ гидролизуется</span> — моносахарид</span></li>
+      <li><span class="step-dot"></span><span>Сахароза <span class="tag tag-green">Гидролизуется ✓</span></span></li>
+    </ul>
+    <div class="formula">C₁₂H₂₂O₁₁ + H₂O <span class="arrow">—(H⁺)→</span> C₆H₁₂O₆ + C₆H₁₂O₆
+<span class="note">  (сахароза)      (глюкоза)  (фруктоза)</span></div>
+  </div>
+
+  <!-- Задание 2 -->
+  <div class="card pink">
+    <div class="card-header">
+      <div class="task-num">2</div>
+      <div class="card-title">Распознавание глицерина и глюкозы</div>
+    </div>
+    <div class="info-box warn">Реактив: Cu(OH)₂ → на холоде + при нагреве</div>
+    <div class="compare">
+      <div class="compare-item">
+        <div class="ci-label">На холоде</div>
+        <div>Оба: <span class="ok">синий раствор</span></div>
+      </div>
+      <div class="compare-item">
+        <div class="ci-label">При нагреве</div>
+        <div>Глюкоза: <span class="ok">Cu₂O↓ (красный)</span><br>Глицерин: <span class="no">осадка нет</span></div>
+      </div>
+    </div>
+    <div class="formula">C₃H₅(OH)₃ + Cu(OH)₂ <span class="arrow">→</span> [C₃H₅(OH)₂O]₂Cu + 2H₂O
+<span class="note">                      (синий раствор)</span>
+
+C₆H₁₂O₆ + Cu(OH)₂ <span class="arrow">—(нагрев)→</span> C₅H₁₁O₅–COOH + <span class="result">Cu₂O↓</span> + H₂O
+<span class="note">                                              (красный осадок)</span></div>
+  </div>
+
+  <!-- Задание 4 -->
+  <div class="card pink">
+    <div class="card-header">
+      <div class="task-num">4</div>
+      <div class="card-title">Распознавание глюкозы и сахарозы</div>
+    </div>
+    <div class="compare">
+      <div class="compare-item">
+        <div class="ci-label">Глюкоза + Cu(OH)₂ + нагрев</div>
+        <div class="ok">Cu₂O↓ — красный осадок ✓</div>
+      </div>
+      <div class="compare-item">
+        <div class="ci-label">Сахароза + Cu(OH)₂ + нагрев</div>
+        <div class="no">Осадка нет ✗</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Задание 6 -->
+  <div class="card pink">
+    <div class="card-header">
+      <div class="task-num">6</div>
+      <div class="card-title">Распознавание глицерина и сахарозы</div>
+    </div>
+    <ul class="steps">
+      <li><span class="step-dot"></span><span>Провести гидролиз сахарозы (H₂SO₄, нагрев)</span></li>
+      <li><span class="step-dot"></span><span>Нейтрализовать, добавить Cu(OH)₂ + нагрев</span></li>
+      <li><span class="step-dot"></span><span>Сахароза (после гидролиза): <span class="ok">Cu₂O↓ (красный)</span></span></li>
+      <li><span class="step-dot"></span><span>Глицерин при нагреве: <span class="no">осадка нет</span></span></li>
+    </ul>
+  </div>
+
+  <!-- Задание 8 -->
+  <div class="card blue">
+    <div class="card-header">
+      <div class="task-num">8</div>
+      <div class="card-title">Распознавание сахарозы и формалина (HCHO)</div>
+    </div>
+    <div class="info-box warn">Реактив: аммиачный раствор AgNO₃ (реактив Толленса)</div>
+    <div class="compare">
+      <div class="compare-item">
+        <div class="ci-label">Формалин</div>
+        <div class="ok">«Серебряное зеркало» Ag↓ ✓</div>
+      </div>
+      <div class="compare-item">
+        <div class="ci-label">Сахароза</div>
+        <div class="no">Реакции не даёт ✗</div>
+      </div>
+    </div>
+    <div class="formula">HCHO + 2Ag(NH₃)₂OH <span class="arrow">→</span> CO₂ + <span class="result">2Ag↓</span> + 4NH₃ + H₂O</div>
+  </div>
+
+  <div class="section-label">Расчётные задачи</div>
+
+  <!-- Задание 3 -->
+  <div class="card yellow">
+    <div class="card-header">
+      <div class="task-num">3</div>
+      <div class="card-title">Масса молочной кислоты из глюкозы 300 г (5% примесей)</div>
+    </div>
+    <div class="formula">C₆H₁₂O₆ <span class="arrow">→</span> 2CH₃CH(OH)COOH
+<span class="note">M(глюк) = 180 г/моль · M(мол.к-та) = 90 г/моль</span></div>
+    <div class="calc">
+      <div class="calc-row"><span class="calc-label">m(чистой глюкозы)</span><span class="calc-val">300 × 0.95 = 285 г</span></div>
+      <div class="calc-row"><span class="calc-label">n(глюкозы)</span><span class="calc-val">285 / 180 = 1.583 моль</span></div>
+      <div class="calc-row"><span class="calc-label">n(мол. кислоты)</span><span class="calc-val">1.583 × 2 = 3.167 моль</span></div>
+      <div class="calc-row"><span class="calc-label">m(мол. кислоты)</span><span class="calc-val">3.167 × 90 = 285 г</span></div>
+    </div>
+    <div class="answer">285 г</div>
+  </div>
+
+  <!-- Задание 5 -->
+  <div class="card yellow">
+    <div class="card-header">
+      <div class="task-num">5</div>
+      <div class="card-title">Масса глюкозы из картофеля 1620 г (крахмал 20%)</div>
+    </div>
+    <div class="formula">(C₆H₁₀O₅)ₙ + nH₂O <span class="arrow">→</span> nC₆H₁₂O₆
+<span class="note">M звена крахмала = 162 г/моль · M(глюк) = 180 г/моль</span></div>
+    <div class="calc">
+      <div class="calc-row"><span class="calc-label">m(крахмала)</span><span class="calc-val">1620 × 0.20 = 324 г</span></div>
+      <div class="calc-row"><span class="calc-label">n(звеньев)</span><span class="calc-val">324 / 162 = 2 моль</span></div>
+      <div class="calc-row"><span class="calc-label">m(глюкозы)</span><span class="calc-val">2 × 180 = 360 г</span></div>
+    </div>
+    <div class="answer">360 г</div>
+  </div>
+
+  <!-- Задание 7 -->
+  <div class="card yellow">
+    <div class="card-header">
+      <div class="task-num">7</div>
+      <div class="card-title">Объём CO₂ при брожении глюкозы 250 г (4% примесей)</div>
+    </div>
+    <div class="formula">C₆H₁₂O₆ <span class="arrow">→</span> 2C₂H₅OH + 2CO₂↑</div>
+    <div class="calc">
+      <div class="calc-row"><span class="calc-label">m(чистой глюкозы)</span><span class="calc-val">250 × 0.96 = 240 г</span></div>
+      <div class="calc-row"><span class="calc-label">n(глюкозы)</span><span class="calc-val">240 / 180 = 1.333 моль</span></div>
+      <div class="calc-row"><span class="calc-label">n(CO₂)</span><span class="calc-val">1.333 × 2 = 2.667 моль</span></div>
+      <div class="calc-row"><span class="calc-label">V(CO₂)</span><span class="calc-val">2.667 × 22.4 = 59.73 л</span></div>
+    </div>
+    <div class="answer">59.73 л</div>
+  </div>
+
+  <!-- Задание 9 -->
+  <div class="card yellow">
+    <div class="card-header">
+      <div class="task-num">9</div>
+      <div class="card-title">Масса сорбита из глюкозы 1 кг (выход 80%)</div>
+    </div>
+    <div class="formula">C₆H₁₂O₆ + H₂ <span class="arrow">→</span> C₆H₁₄O₆ (сорбит)
+<span class="note">M(глюк) = 180 г/моль · M(сорбит) = 182 г/моль</span></div>
+    <div class="calc">
+      <div class="calc-row"><span class="calc-label">n(глюкозы)</span><span class="calc-val">1000 / 180 = 5.556 моль</span></div>
+      <div class="calc-row"><span class="calc-label">m(сорбита) теор.</span><span class="calc-val">5.556 × 182 = 1011.1 г</span></div>
+      <div class="calc-row"><span class="calc-label">m(сорбита) практ.</span><span class="calc-val">1011.1 × 0.80 = 808.89 г</span></div>
+    </div>
+    <div class="answer">808.89 г</div>
+  </div>
+
+  <!-- Задание 11 -->
+  <div class="card yellow">
+    <div class="card-header">
+      <div class="task-num">11</div>
+      <div class="card-title">Масса глюкозы из крахмала 200 г (5% примесей, выход 95%)</div>
+    </div>
+    <div class="calc">
+      <div class="calc-row"><span class="calc-label">m(чист. крахмала)</span><span class="calc-val">200 × 0.95 = 190 г</span></div>
+      <div class="calc-row"><span class="calc-label">n(звеньев)</span><span class="calc-val">190 / 162 = 1.1728 моль</span></div>
+      <div class="calc-row"><span class="calc-label">m(глюкозы) теор.</span><span class="calc-val">1.1728 × 180 = 211.11 г</span></div>
+      <div class="calc-row"><span class="calc-label">m(глюкозы) практ.</span><span class="calc-val">211.11 × 0.95 = 200.56 г</span></div>
+    </div>
+    <div class="answer">200.56 г</div>
+  </div>
+
+  <div class="section-label">Цепочки превращений</div>
+
+  <!-- Задание 10 -->
+  <div class="card blue">
+    <div class="card-header">
+      <div class="task-num">10</div>
+      <div class="card-title">Крахмал → Глюкоза → Этиловый спирт → Уксусноэтиловый эфир</div>
+    </div>
+    <div class="chain">
+      <div class="chain-item">Крахмал</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item">Глюкоза</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item">C₂H₅OH</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item">CH₃COOC₂H₅</div>
+    </div>
+    <div class="formula"><span class="note">1) Гидролиз крахмала (H⁺, t):</span>
+(C₆H₁₀O₅)ₙ + nH₂O <span class="arrow">→</span> nC₆H₁₂O₆
+
+<span class="note">2) Спиртовое брожение (ферменты):</span>
+C₆H₁₂O₆ <span class="arrow">→</span> 2C₂H₅OH + 2CO₂↑
+
+<span class="note">3) Этерификация (H⁺):</span>
+C₂H₅OH + CH₃COOH <span class="arrow">⇌</span> CH₃COOC₂H₅ + H₂O</div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════ ЧАСТЬ 2 ═══════════════════════════════ -->
+<div id="part2" class="tab-pane">
+
+  <button class="expand-btn" onclick="expandAll()">▼ Раскрыть все вопросы</button>
+
+  <!-- Q1 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div class="q-title">Что такое углеводы и почему такое название?</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <p>Углеводы — <strong>органические вещества</strong> общей формулы <strong>Cₙ(H₂O)ₘ</strong>.</p>
+      <p>Название дано потому, что исторически состав воспринимался как «углерод + вода» (гидраты углерода). Молекулы воды в явном виде в них не содержатся.</p>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div class="q-title">Классификация углеводов</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <table class="tbl">
+        <tr><th>Класс</th><th>Примеры</th><th>Особенность</th></tr>
+        <tr><td><strong style="color:var(--accent)">Моносахариды</strong></td><td>Глюкоза C₆H₁₂O₆, фруктоза, рибоза</td><td>Не гидролизуются</td></tr>
+        <tr><td><strong style="color:var(--accent2)">Дисахариды</strong></td><td>Сахароза C₁₂H₂₂O₁₁, мальтоза</td><td>Гидролиз → 2 моносахарида</td></tr>
+        <tr><td><strong style="color:var(--accent3)">Полисахариды</strong></td><td>Крахмал, целлюлоза (C₆H₁₀O₅)ₙ</td><td>Гидролиз → много моносахаридов</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">3</div>
+      <div class="q-title">Где встречаются глюкоза и фруктоза?</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <p><strong>Глюкоза:</strong> виноград, спелые фрукты, мёд, кровь (~0.1%)</p>
+      <p><strong>Фруктоза:</strong> фрукты, мёд, нектар цветов (слаще глюкозы)</p>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">4</div>
+      <div class="q-title">Гликолиз и его значение</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <p>Гликолиз — <strong>ферментативное расщепление глюкозы без кислорода</strong> до пировиноградной кислоты (ПВК) с выделением энергии (АТФ).</p>
+      <div class="formula">C₆H₁₂O₆ <span class="arrow">→</span> 2CH₃COCOOH + 4[H] + <span class="result">энергия</span></div>
+      <p><strong>Значение:</strong> обеспечивает энергией при бескислородных условиях (мышцы при нагрузке, микроорганизмы)</p>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">5</div>
+      <div class="q-title">Фотосинтез и дыхание</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <p><strong>Фотосинтез</strong> (хлоропласты, хлорофилл поглощает свет):</p>
+      <div class="formula">6CO₂ + 6H₂O <span class="arrow">—(свет, хл-лл)→</span> C₆H₁₂O₆ + 6O₂</div>
+      <p>Способны: растения, водоросли, цианобактерии.</p>
+      <p><strong>Дыхание:</strong></p>
+      <div class="formula">C₆H₁₂O₆ + 6O₂ <span class="arrow">→</span> 6CO₂ + 6H₂O + <span class="result">энергия</span></div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">6</div>
+      <div class="q-title">Процессы брожения глюкозы</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <table class="tbl">
+        <tr><th>Вид</th><th>Уравнение</th><th>Применение</th></tr>
+        <tr>
+          <td><strong style="color:var(--accent)">Спиртовое</strong></td>
+          <td><span style="font-family:monospace;font-size:12px">C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂</span></td>
+          <td>Виноделие, хлебопечение</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--accent2)">Молочнокислое</strong></td>
+          <td><span style="font-family:monospace;font-size:12px">C₆H₁₂O₆ → 2CH₃CH(OH)COOH</span></td>
+          <td>Кисломолочные продукты</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">7</div>
+      <div class="q-title">Получение глюкозы и сахарозы в промышленности</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <p><strong>Глюкоза:</strong> гидролиз крахмала (H₂SO₄, нагрев)</p>
+      <div class="formula">(C₆H₁₀O₅)ₙ + nH₂O <span class="arrow">→</span> nC₆H₁₂O₆</div>
+      <p><strong>Сахароза:</strong> выпаривание и кристаллизация сока сахарной свёклы или тростника (физический процесс, без хим. реакций)</p>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">8</div>
+      <div class="q-title">Различие моносахаридов и дисахаридов</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <div class="compare">
+        <div class="compare-item">
+          <div class="ci-label">Моносахариды</div>
+          <div>Не гидролизуются<br>Простые молекулы C₆H₁₂O₆</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-label">Дисахариды</div>
+          <div>Гидролиз → 2 моносахарида<br>Гликозидная связь, C₁₂H₂₂O₁₁</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">9</div>
+      <div class="q-title">Элементарные звенья крахмала и целлюлозы</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <p>Оба биополимера построены из остатков глюкозы <strong>C₆H₁₀O₅</strong>.</p>
+      <div class="compare">
+        <div class="compare-item">
+          <div class="ci-label">Крахмал</div>
+          <div>α-глюкоза<br>Спиральные цепи<br>(амилоза + амилопектин, ветвистый)</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-label">Целлюлоза</div>
+          <div>β-глюкоза<br>Линейные цепи<br>Водородные связи → прочные волокна</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">10</div>
+      <div class="q-title">Гидролиз крахмала и целлюлозы</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <p>Оба дают <strong>глюкозу C₆H₁₂O₆</strong>.</p>
+      <p><strong>Крахмал</strong> гидролизуется легче — ферменты амилаза (слюна) и кислоты.</p>
+      <p><strong>Целлюлоза</strong> труднее — β-связи и упорядоченная структура.</p>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">11</div>
+      <div class="q-title">Катализаторы гидролиза. Почему целлюлоза не усваивается?</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <p><strong>Катализаторы:</strong> кислоты (H₂SO₄, HCl) и ферменты (амилаза — крахмал; целлюлаза — целлюлоза)</p>
+      <div class="info-box warn">В ЖКТ человека нет фермента <strong>целлюлазы</strong> → целлюлоза не расщепляется. Играет роль пищевых волокон (стимулирует перистальтику).</div>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">12</div>
+      <div class="q-title">Продукты ди- и тринитрования целлюлозы</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <ul class="steps">
+        <li><span class="step-dot"></span><span><strong>Динитроцеллюлоза</strong> → коллодий, пироксилиновый порох</span></li>
+        <li><span class="step-dot"></span><span><strong>Тринитроцеллюлоза (пироксилин)</strong> → взрывчатое вещество</span></li>
+      </ul>
+      <div class="formula">[C₆H₇O₂(OH)₃]ₙ + 3nHNO₃ <span class="arrow">—(H₂SO₄)→</span> [C₆H₇O₂(ONO₂)₃]ₙ + 3nH₂O</div>
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">13</div>
+      <div class="q-title">Химическая переработка целлюлозы</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <ul class="steps">
+        <li><span class="step-dot"></span><span><strong>Нитрование</strong> → нитроцеллюлоза (взрывчатые вещества, лаки)</span></li>
+        <li><span class="step-dot"></span><span><strong>Ацетилирование</strong> → ацетатное волокно, ацетатный шёлк</span></li>
+        <li><span class="step-dot"></span><span><strong>Ксантогенирование</strong> → вискозное волокно</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="q-card" onclick="toggleQ(this)">
+    <div class="q-header">
+      <div class="q-num">15</div>
+      <div class="q-title">Искусственные волокна. Ацетатное волокно</div>
+      <div class="q-chevron">⌄</div>
+    </div>
+    <div class="q-body">
+      <p><strong>Искусственные волокна</strong> — получают химической обработкой природных полимеров (целлюлозы).</p>
+      <p><strong>Получение ацетатного волокна:</strong></p>
+      <ul class="steps">
+        <li><span class="step-dot"></span><span>Целлюлоза + уксусный ангидрид (ацетилирование) → триацетат целлюлозы</span></li>
+        <li><span class="step-dot"></span><span>Растворяется в ацетоне</span></li>
+        <li><span class="step-dot"></span><span>Раствор продавливается через фильеры в воздух → затвердевает в волокна</span></li>
+      </ul>
+      <div class="formula">[C₆H₇O₂(OH)₃]ₙ + 3n(CH₃CO)₂O <span class="arrow">→</span> [C₆H₇O₂(OOCCH₃)₃]ₙ + 3nCH₃COOH</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function toggleQ(card) {
+    card.classList.toggle('open');
+  }
+
+  function expandAll() {
+    const all = document.querySelectorAll('.q-card');
+    const anyOpen = [...all].some(c => c.classList.contains('open'));
+    all.forEach(c => anyOpen ? c.classList.remove('open') : c.classList.add('open'));
+    document.querySelector('.expand-btn').textContent = anyOpen ? '▼ Раскрыть все вопросы' : '▲ Свернуть все';
+  }
+
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scrollTop');
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+</script>
+</body>
+</html>
